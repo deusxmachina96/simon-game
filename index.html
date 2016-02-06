@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="simonGame">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Simon Game</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-audio/app/angular.audio.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="MainCtrl">
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h1 class="title">Simon Game</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="menu-wrapper"><span class="start clickable menu-style" ng-click="startGame()">Start</span> <span class="strict menu-style clickable" ng-click="changeStrict()">Strict Mode: {{strict ? "ON" : "OFF"}}</span> <span class="score menu-style">Score: {{currentScore}}</span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <table>
+                    <tr>
+                        <td class="green" ng-click="playerClick(0)" ng-class="{'highlight': highlights[0], 'clickable': allowPlayerAction}"></td>
+                        <td class="red" ng-click="playerClick(1)" ng-class="{'highlight': highlights[1], 'clickable': allowPlayerAction}"></td>
+                    </tr>
+                    <tr>
+                        <td class="yellow" ng-click="playerClick(2)" ng-class="{'highlight': highlights[2], 'clickable': allowPlayerAction}"></td>
+                        <td class="blue" ng-click="playerClick(3)" ng-class="{'highlight': highlights[3], 'clickable': allowPlayerAction}"></td>
+                    </tr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="result-wrapper" ng-show="gameOver != 0">{{displayResult()}}</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
